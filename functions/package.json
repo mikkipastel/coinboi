@@ -1,6 +1,6 @@
 {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
+  "name": "coinboi",
+  "description": "crypto chatbot",
   "scripts": {
     "lint": "eslint .",
     "serve": "firebase emulators:start --only functions",
