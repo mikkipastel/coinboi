@@ -10,6 +10,8 @@ const utils = require("./utils");
 const lineTemplate = require("../templates/line_template");
 const stockToken = require("./stock_token");
 
+const googleSheetId = functions.config().sheets.id;
+
 // Create JWT
 const serviceAccount = require("../service-account.json");
 const jwtClient = new google.auth.JWT({
@@ -21,13 +23,11 @@ const jwtClient = new google.auth.JWT({
 function stockTokenCarousel(replyToken) {
   return sheets.spreadsheets.values.get({
     auth: jwtClient,
-    spreadsheetId: functions.config().sheets.id,
+    spreadsheetId: googleSheetId,
     range: "stock token!A2:H6"
   }).then((response) => {
     var data = response.data.values;
-    var length = data.length
-    console.log(data);
-    console.log(`${length} rows retrieved.`);
+    var length = data.length;
 
     var allStockTokenFlexMessage = [];
       data.forEach(stock => {
@@ -46,7 +46,7 @@ function stockTokenCarousel(replyToken) {
 function stockTokenFlexMessage(replyToken, name) {
   return sheets.spreadsheets.values.get({
     auth: jwtClient,
-    spreadsheetId: functions.config().sheets.id,
+    spreadsheetId: googleSheetId,
     range: "stock token!A2:H6"
   }).then((response) => {
     const data = response.data.values;

@@ -2,10 +2,11 @@ const functions = require("firebase-functions");
 const axios = require("axios");
 
 // LINE
-const LINE_MESSAGING_API = "https://api.line.me/v2/bot";
+const LINE_MESSAGING_API = "https://api.line.me/v2/bot"
+const LINE_ACCESS_TOKEN = functions.config().line.access_token;
 const LINE_HEADER = {
   "Content-Type": "application/json",
-  Authorization: `Bearer ${functions.config().line.access_token}`
+  Authorization: `Bearer ${LINE_ACCESS_TOKEN}`
 };
 
 const reply = (token, payload) => {

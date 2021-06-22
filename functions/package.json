@@ -1,5 +1,8 @@
 {
   "name": "coinboi",
+  "version": "1.0.0",
+  "author": "MikkiPastel",
+  "license": "ISC",
   "description": "crypto chatbot",
   "scripts": {
     "lint": "eslint .",
@@ -14,8 +17,12 @@
   },
   "main": "index.js",
   "dependencies": {
-    "firebase-admin": "^9.8.0",
-    "firebase-functions": "^3.14.1"
+    "axios": "^0.21.1",
+    "firebase-admin": "^9.9.0",
+    "firebase-functions": "^3.14.1",
+    "googleapis": "^78.0.0",
+    "install": "^0.13.0",
+    "npm": "^7.18.1"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
