@@ -5,12 +5,12 @@ const functions = require("firebase-functions");
 const {google} = require("googleapis");
 const sheets = google.sheets("v4");
 
+const googleSheetId = functions.config().sheets.id;
+
 // import module
 const utils = require("./utils");
 const lineTemplate = require("../templates/line_template");
 const stockToken = require("./stock_token");
-
-const googleSheetId = functions.config().sheets.id;
 
 // Create JWT
 const serviceAccount = require("../service-account.json");
@@ -27,11 +27,10 @@ function stockTokenCarousel(replyToken) {
     range: "stock token!A2:H6"
   }).then((response) => {
     var data = response.data.values;
-    var length = data.length;
 
     var allStockTokenFlexMessage = [];
       data.forEach(stock => {
-        const flexMessageResult = stockToken.setStockTokenPlanFlexMessage(stock);
+        const flexMessageResult = stockToken.setStockTokenFlexMessageJson(stock);
         allStockTokenFlexMessage.push(flexMessageResult);
       }
     );

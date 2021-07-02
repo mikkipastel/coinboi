@@ -1,6 +1,6 @@
 const lineTemplate = require('../templates/line_template')
 
-function setStockTokenPlanFlexMessage(stock) {
+function setStockTokenFlexMessageJson(stock) {
   const greenTextTitle = "#00701a";
   const greenTextBody = "#43a047";
     
@@ -141,11 +141,11 @@ function setStockTokenPlanFlexMessage(stock) {
 function setFlexMessageForStockToken(stock) {
   return lineTemplate.flexMessageTemplate(
     `Stock Token : ${stock[0].split(":")[1]}`, 
-    setStockTokenPlanFlexMessage(stock)
+    setStockTokenFlexMessageJson(stock)
   );
 }
 
 module.exports = { 
-  setStockTokenPlanFlexMessage,
+  setStockTokenFlexMessageJson,
   setFlexMessageForStockToken 
 };
